@@ -163,9 +163,6 @@ class Inflector
         if (!isset(static::$_urlized[$string]))
         {
             $urlized = trim($string);
-
-            // 日本語、英語、ハイフン、アンダースコア以外の文字はハイフンにする
-            // 連続する場合も一つのハイフンにする
             $urlized = mb_convert_kana($urlized, 'KVa', 'UTF-8');
             $urlized = preg_replace('/^[、。！？（）「」『』【】]+$/u', ' ', $urlized);
             $urlized = preg_replace('/[^0-9a-z一-龠々ヵヶぁ-んァ-ヴー_-]+/iu', '-', $urlized);
